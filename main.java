@@ -11,10 +11,10 @@ class SavingsAccount
         System.out.print("Enter saving account balance: ");
         double acc_bal = input.nextDouble();
 
-        input.close();
-
         this.acc_num = acc_num;
         this.acc_bal = acc_bal;
+        
+        input.close();
     }
 
     private String acc_num;
@@ -40,11 +40,11 @@ class Bonds
         System.out.print("Enter number of bonds: ");
         int bond_num = input.nextInt();
 
-        input.close();
-
         this.bond_name = bond_name;
         this.face_val = face_val;
         this.bond_num = bond_num;
+        
+        input.close();
     }
 
     private String bond_name;
@@ -73,11 +73,11 @@ class Stocks
         System.out.print("Enter number of shares: ");
         int share_num = input.nextInt();
 
-        input.close();
-
         this.stock_name = stock_name;
         this.stock_val = stock_val;
         this.shares_num = share_num;
+        
+        input.close();
     }
 
     private String stock_name;
@@ -99,15 +99,12 @@ class FinancialPortfolio
     {
         Scanner input = new Scanner(System.in);
 
-        // gets input from user and sets it to appropriate object
         System.out.print("Enter first name: ");
         String first_name = input.nextLine();
         System.out.print("Enter last name: ");
         String last_name = input.nextLine();
         System.out.print("Enter portfolio number: ");
         int p_num = input.nextInt();
-
-        input.close();
 
         this.first_name = first_name;
         this.last_name = last_name;
@@ -116,6 +113,8 @@ class FinancialPortfolio
         SA = new SavingsAccount();
         B = new Bonds();
         S = new Stocks();
+
+        input.close();
     }
     
     private String first_name;
