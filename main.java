@@ -2,19 +2,16 @@ import java.util.*;
 
 class SavingsAccount
 {
-    public SavingsAccount()
+    public SavingsAccount(Scanner input)
     {
-        Scanner input = new Scanner(System.in);
-
         System.out.print("Enter saving account number: ");
         String acc_num = input.nextLine();
         System.out.print("Enter saving account balance: ");
         double acc_bal = input.nextDouble();
+        input.nextLine();
 
         this.acc_num = acc_num;
         this.acc_bal = acc_bal;
-        
-        input.close();
     }
 
     private String acc_num;
@@ -29,22 +26,19 @@ class SavingsAccount
 
 class Bonds
 {
-    public Bonds()
+    public Bonds(Scanner input)
     {
-        Scanner input = new Scanner(System.in);
-
         System.out.print("Enter bond name: ");
         String bond_name = input.nextLine();
         System.out.print("Enter bond face value: ");
         double face_val = input.nextDouble();
         System.out.print("Enter number of bonds: ");
         int bond_num = input.nextInt();
+        input.nextLine();
 
         this.bond_name = bond_name;
         this.face_val = face_val;
         this.bond_num = bond_num;
-        
-        input.close();
     }
 
     private String bond_name;
@@ -62,22 +56,19 @@ class Bonds
 
 class Stocks
 {
-    public Stocks()
+    public Stocks(Scanner input)
     {
-        Scanner input = new Scanner(System.in);
-
         System.out.print("Enter stock name: ");
         String stock_name = input.nextLine();
         System.out.print("Enter stock value: ");
         float stock_val = input.nextFloat();
         System.out.print("Enter number of shares: ");
         int share_num = input.nextInt();
-
+        input.nextLine();
+        
         this.stock_name = stock_name;
         this.stock_val = stock_val;
         this.shares_num = share_num;
-        
-        input.close();
     }
 
     private String stock_name;
@@ -95,26 +86,23 @@ class Stocks
 
 class FinancialPortfolio
 {
-    public FinancialPortfolio() 
+    public FinancialPortfolio(Scanner input) 
     {
-        Scanner input = new Scanner(System.in);
-
         System.out.print("Enter first name: ");
         String first_name = input.nextLine();
         System.out.print("Enter last name: ");
         String last_name = input.nextLine();
         System.out.print("Enter portfolio number: ");
         int p_num = input.nextInt();
+        input.nextLine();
 
         this.first_name = first_name;
         this.last_name = last_name;
         this.p_num = p_num;
         p_val = 0;
-        SA = new SavingsAccount();
-        B = new Bonds();
-        S = new Stocks();
-
-        input.close();
+        SA = new SavingsAccount(input);
+        B = new Bonds(input);
+        S = new Stocks(input);
     }
     
     private String first_name;
@@ -148,12 +136,14 @@ class FinancialPortfolio
 
 class Main {
     public static void main(String[] args) {
-        FinancialPortfolio fp = new FinancialPortfolio();
+        Scanner input = new Scanner(System.in);
+        FinancialPortfolio fp = new FinancialPortfolio(input);
+        input.close();
 
-        System.out.println("Portfolio Name: " + fp.get_first_name() + "'s Portfolio");
-        System.out.println("Saving's account: " + fp.get_SA().get_acc_num() + "($" + fp.get_SA().get_acc_bal() + ")");
-        System.out.println("Bonds: " + fp.get_B().get_bond_name() + "($" + String.format("%.2f", fp.get_B().get_bond_num() * fp.get_B().get_face_val()) + ")");
-        System.out.println("Stocks: " + fp.get_S().get_stock_name() + "($" + String.format("%.2f", fp.get_S().get_shares_num() * fp.get_S().get_stock_val()) + ")");
-        System.out.println("Portfolio value: $" + fp.get_p_val());
+        System.out.printf("\nPortfolio Name: %s's Portfolio\n", fp.get_first_name());
+        System.out.printf("Saving's account: %s ($%.2f)\n", fp.get_SA().get_acc_num(), fp.get_SA().get_acc_bal());
+        System.out.printf("Bonds: %s ($%.2f)\n", fp.get_B().get_bond_name(), fp.get_B().get_bond_num() * fp.get_B().get_face_val());
+        System.out.printf("Stocks: %s ($%.2f)\n", fp.get_S().get_stock_name(), fp.get_S().get_shares_num() * fp.get_S().get_stock_val());
+        System.out.printf("Portfolio value: $%.2f\n", fp.get_p_val());
     }
 }
