@@ -153,8 +153,8 @@ class Main {
 
         System.out.println("Portfolio Name: " + fp.get_first_name() + "'s Portfolio");
         System.out.println("Saving's account: " + fp.get_SA().get_acc_num() + "($" + fp.get_SA().get_acc_bal() + ")");
-        System.out.println("Bonds: " + "($" + ")");
-        System.out.println("Stocks: " + "($" + ")");
-        System.out.println("Portfolio value: $" );
+        System.out.println("Bonds: " + fp.get_B().get_bond_name() + "($" + String.format("%.2f", fp.get_B().get_bond_num() * fp.get_B().get_face_val()) + ")");
+        System.out.println("Stocks: " + fp.get_S().get_stock_name() + "($" + String.format("%.2f", fp.get_S().get_shares_num() * fp.get_S().get_stock_val()) + ")");
+        System.out.println("Portfolio value: $" + fp.get_p_val());
     }
 }
